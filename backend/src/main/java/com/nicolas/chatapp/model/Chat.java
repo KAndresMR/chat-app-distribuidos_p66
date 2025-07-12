@@ -22,15 +22,18 @@ public class Chat {
     private String chatName;
     private Boolean isGroup;
 
+    @Builder.Default
     @ManyToMany
     private Set<User> admins = new HashSet<>();
 
+    @Builder.Default
     @ManyToMany
     private Set<User> users = new HashSet<>();
 
     @ManyToOne
     private User createdBy;
 
+    @Builder.Default
     @OneToMany(cascade = CascadeType.ALL)
     private List<Message> messages = new ArrayList<>();
 

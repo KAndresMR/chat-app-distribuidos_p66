@@ -53,6 +53,7 @@ class MessageControllerTest extends AbstractIntegrationTest {
     private final UUID lukeAndLeiaMessage2Id = UUID.fromString("15733d9e-939d-497b-b042-fd2fe54d7430");
     private final UUID lukeTheGoodiesMessageId = UUID.fromString("6bd25bf8-dba1-46b1-8821-ba838d4a84ae");
 
+    @SuppressWarnings("null")
     @Test
     void sendMessage() throws UserException, ChatException, MessageException {
 
@@ -80,6 +81,7 @@ class MessageControllerTest extends AbstractIntegrationTest {
         assertThrows(ChatException.class, () -> messageController.sendMessage(request2, authorization));
     }
 
+    @SuppressWarnings("null")
     @Test
     void getChatMessages() throws UserException, MessageException, ChatException {
 
@@ -117,6 +119,7 @@ class MessageControllerTest extends AbstractIntegrationTest {
         LoginRequestDTO request = new LoginRequestDTO(mail, "1234");
         LoginResponseDTO response = authController.login(request).getBody();
         assert response != null;
+        @SuppressWarnings("null")
         String authorization = JwtConstants.TOKEN_PREFIX + response.token();
         messageController.deleteMessage(lukeTheGoodiesMessageId, authorization);
         assertThrows(MessageException.class, () -> messageService.findMessageById(lukeTheGoodiesMessageId));

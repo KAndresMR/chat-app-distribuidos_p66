@@ -53,7 +53,7 @@ public class ChatController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ChatDTO> findChatById(@PathVariable("id") UUID id)
+    public ResponseEntity<ChatDTO> findChatById(@PathVariable UUID id)
             throws ChatException {
 
         Chat chat = chatService.findChatById(id);

@@ -11,10 +11,8 @@ import com.nicolas.chatapp.dto.response.UserDTO;
 import com.nicolas.chatapp.exception.ChatException;
 import com.nicolas.chatapp.exception.MessageException;
 import com.nicolas.chatapp.exception.UserException;
-import com.nicolas.chatapp.model.Chat;
 import com.nicolas.chatapp.model.Message;
 import com.nicolas.chatapp.model.User;
-import com.nicolas.chatapp.service.ChatService;
 import com.nicolas.chatapp.service.MessageService;
 import com.nicolas.chatapp.service.UserService;
 import org.junit.jupiter.api.Test;
@@ -58,6 +56,7 @@ class ChatControllerTest extends AbstractIntegrationTest {
     private final UUID messageLukeLeia1Id = UUID.fromString("620d606a-9033-4210-b9c0-982e0f3800ef");
     private final UUID messageLukeLeia2Id = UUID.fromString("15733d9e-939d-497b-b042-fd2fe54d7430");
 
+    @SuppressWarnings("null")
     @Test
     void createSingleChat() throws UserException, ChatException {
 
@@ -86,6 +85,7 @@ class ChatControllerTest extends AbstractIntegrationTest {
         assertThrows(UserException.class, () -> chatController.createSingleChat(notExistingId, authorization));
     }
 
+    @SuppressWarnings("null")
     @Test
     void createGroupChat() throws UserException, ChatException {
 
@@ -110,6 +110,7 @@ class ChatControllerTest extends AbstractIntegrationTest {
         assertThat(repositoryChat).isEqualTo(result);
     }
 
+    @SuppressWarnings("null")
     @Test
     void findChatById() throws UserException, MessageException, ChatException {
 
@@ -142,6 +143,7 @@ class ChatControllerTest extends AbstractIntegrationTest {
         LoginRequestDTO request = new LoginRequestDTO(mail, "1234");
         LoginResponseDTO response = authController.login(request).getBody();
         assert response != null;
+        @SuppressWarnings("null")
         String authorization = JwtConstants.TOKEN_PREFIX + response.token();
         ResponseEntity<List<ChatDTO>> result = chatController.findAllChatsByUserId(authorization);
         ResponseEntity<ChatDTO> chat1 = chatController.findChatById(theGoodiesChatId);
@@ -153,6 +155,7 @@ class ChatControllerTest extends AbstractIntegrationTest {
                         Objects.requireNonNull(chat3.getBody())));
     }
 
+    @SuppressWarnings("null")
     @Test
     void addUserToGroup() throws UserException, ChatException {
 
@@ -184,6 +187,7 @@ class ChatControllerTest extends AbstractIntegrationTest {
         assertThrows(UserException.class, () -> chatController.addUserToGroup(theGoodiesChatId, vadersId, finalAuthorization1));
     }
 
+    @SuppressWarnings("null")
     @Test
     void removeUserFromGroup() throws UserException, ChatException {
 
@@ -227,6 +231,7 @@ class ChatControllerTest extends AbstractIntegrationTest {
         assertThrows(UserException.class, () -> chatController.removeUserFromGroup(theGoodiesChatId, lukesId, finalAuthorization));
     }
 
+    @SuppressWarnings("null")
     @Test
     void markAsRead() throws UserException, ChatException {
 
@@ -255,6 +260,7 @@ class ChatControllerTest extends AbstractIntegrationTest {
         assertThrows(UserException.class, () -> chatController.markAsRead(theGoodiesChatId, finalAuthorization1));
     }
 
+    @SuppressWarnings("null")
     @Test
     void deleteChat() throws ChatException, UserException {
 

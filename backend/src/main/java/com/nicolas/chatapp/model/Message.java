@@ -32,6 +32,7 @@ public class Message {
     @ManyToOne
     private Chat chat;
 
+    @Builder.Default
     @ElementCollection
     private Set<UUID> readBy = new HashSet<>();
 

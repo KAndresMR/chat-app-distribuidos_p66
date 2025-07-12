@@ -3,7 +3,6 @@ package com.nicolas.chatapp.service;
 import com.nicolas.chatapp.AbstractIntegrationTest;
 import com.nicolas.chatapp.config.JwtConstants;
 import com.nicolas.chatapp.controllers.AuthController;
-import com.nicolas.chatapp.controllers.UserController;
 import com.nicolas.chatapp.dto.request.LoginRequestDTO;
 import com.nicolas.chatapp.dto.request.UpdateUserRequestDTO;
 import com.nicolas.chatapp.dto.response.LoginResponseDTO;
@@ -43,6 +42,7 @@ class UserServiceTest extends AbstractIntegrationTest {
         assertThrows(UserException.class, () -> userService.findUserById(notExistingId));
     }
 
+    @SuppressWarnings("null")
     @Test
     void findUserByProfile() throws UserException {
 

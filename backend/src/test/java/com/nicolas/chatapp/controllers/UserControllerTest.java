@@ -34,6 +34,7 @@ class UserControllerTest extends AbstractIntegrationTest {
     private final UUID lukesId = UUID.fromString("be900497-cc68-4504-9b99-4e5deaf1e6c0");
     private final UUID vadersId = UUID.fromString("f290f384-60ba-4cdd-af96-26c88ede0264");
 
+    @SuppressWarnings("null")
     @Test
     void getUserProfile() throws UserException {
         // Get user
@@ -62,6 +63,7 @@ class UserControllerTest extends AbstractIntegrationTest {
         LoginRequestDTO request = new LoginRequestDTO(mail, "1234");
         LoginResponseDTO response = authController.login(request).getBody();
         assert response != null;
+        @SuppressWarnings("null")
         String authorization = JwtConstants.TOKEN_PREFIX + response.token();
         ResponseEntity<UserDTO> luke = userController.getUserProfile(authorization);
         ResponseEntity<List<UserDTO>> result = userController.searchUsers("Luke");
@@ -82,12 +84,14 @@ class UserControllerTest extends AbstractIntegrationTest {
         LoginRequestDTO request = new LoginRequestDTO(mail, "1234");
         LoginResponseDTO response = authController.login(request).getBody();
         assert response != null;
+        @SuppressWarnings("null")
         String authorization = JwtConstants.TOKEN_PREFIX + response.token();
         ResponseEntity<UserDTO> luke = userController.getUserProfile(authorization);
         ResponseEntity<Set<UserDTO>> result = userController.searchUsersByName("Luke Skywalker");
         assertThat(result.getBody()).containsExactly(luke.getBody());
     }
 
+    @SuppressWarnings("null")
     @Test
     void updateUser() throws UserException {
 
